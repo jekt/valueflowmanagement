@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Facilitating, Start Leading | The Scrum Master's Path to Value Flow Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A0E27;
+            --accent: #FF4B1F;
+            --secondary: #1E5EFF;
+            --light: #F8F9FA;
+            --mid: #6C757D;
+            --border: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--primary);
+            background: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a1f3a 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.02) 2px,
+                    rgba(255, 255, 255, 0.02) 4px
+                );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero-book {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .book-cover-svg {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .book-cover-svg svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .book-wrapper:hover .book-cover-svg {
+            transform: translateY(-10px) rotateY(5deg);
+        }
+
+        .book-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255, 75, 31, 0.3), transparent 70%);
+            filter: blur(40px);
+            opacity: 0.6;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .hero-book {
+                order: -1;
+            }
+
+            .book-wrapper {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+
+        .eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .btn {
+            padding: 1.25rem 2.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 75, 31, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #ff6b3f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 75, 31, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--mid);
+            margin-bottom: 4rem;
+            max-width: 700px;
+        }
+
+        .problem {
+            background: white;
+            border-top: 4px solid var(--accent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            border-left: 3px solid var(--secondary);
+            background: var(--light);
+        }
+
+        .stat-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .solution {
+            background: var(--light);
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .framework-card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .framework-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.3s ease;
+        }
+
+        .framework-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .framework-card:hover::before {
+            height: 100%;
+        }
+
+        .framework-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .framework-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .framework-desc {
+            color: var(--mid);
+            line-height: 1.8;
+        }
+
+        .author {
+            background: var(--primary);
+            color: white;
+        }
+
+        .author-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .author-image {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Crimson Pro', serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .author-bio h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-bio p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .chapters {
+            background: white;
+        }
+
+        .chapter-list {
+            margin-top: 3rem;
+        }
+
+        .chapter-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: start;
+            transition: padding-left 0.3s ease;
+        }
+
+        .chapter-item:hover {
+            padding-left: 1rem;
+        }
+
+        .chapter-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            opacity: 0.3;
+        }
+
+        .chapter-content h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .chapter-content p {
+            color: var(--mid);
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section .section-title {
+            color: white;
+        }
+
+        .cta-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 auto 3rem;
+        }
+
+        footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        footer a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .author-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .chapter-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(255, 75, 31, 0.2) 0%, rgba(30, 94, 255, 0.2) 100%);
+            padding: 0.2em 0.4em;
+            border-radius: 2px;
+        }
+
+        .testimonial {
+            background: var(--light);
+            padding: 3rem;
+            border-left: 4px solid var(--secondary);
+            margin: 3rem 0;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        .testimonial-author {
+            margin-top: 1.5rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--mid);
+            font-size: 1rem;
+        }
+
+        .book-details {
+            background: var(--light);
+            padding: 6rem 2rem;
+        }
+
+        .book-details-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-list strong {
+            display: block;
+            font-size: 1.125rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-list p {
+            color: var(--mid);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--accent);
+            position: sticky;
+            top: 2rem;
+        }
+
+        .price-badge {
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: -3rem -3rem 2rem -3rem;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .price-wrapper {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .price-label {
+            font-size: 0.875rem;
+            color: var(--mid);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .price {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.875rem;
+            color: var(--mid);
+        }
+
+        .btn-large {
+            width: 100%;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            font-size: 1rem;
+        }
+
+        .guarantee {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .guarantee strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .guarantee p {
+            color: var(--mid);
+            font-size: 0.875rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .sample-link {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .sample-link a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .sample-link a:hover {
+            border-bottom-color: var(--secondary);
+        }
+
+        @media (max-width: 968px) {
+            .book-details-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .pricing-card {
+                position: static;
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="eyebrow">For Agile Practitioners</div>
+                    <h1>Stop Facilitating,<br>Start Leading</h1>
+                    <p class="subtitle">The Scrum Master's Path to Value Flow Management</p>
+                    <div class="cta-group">
+                        <a href="https://leanpub.com/valueflowmanagement" target="_blank" class="btn btn-primary">Get the Book on Leanpub</a>
+                        <a href="#chapters" class="btn btn-secondary">Read Sample Chapter</a>
+                    </div>
+                </div>
+                <div class="hero-book">
+                    <div class="book-wrapper">
+                        <div class="book-cover-svg">
+                            <svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Book background -->
+                                <rect width="400" height="600" fill="url(#bookGradient)"/>
+                                
+                                <!-- Gradient definition -->
+                                <defs>
+                                    <linearGradient id="bookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#0A0E27;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#1a1f3a;stop-opacity:1" />
+                                    </linearGradient>
+                                    <filter id="glow">
+                                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                
+                                <!-- Decorative line -->
+                                <line x1="40" y1="80" x2="200" y2="80" stroke="#FF4B1F" stroke-width="3"/>
+                                
+                                <!-- Title -->
+                                <text x="40" y="140" font-family="'Crimson Pro', serif" font-size="52" font-weight="700" fill="white">
+                                    <tspan x="40" dy="0">STOP</tspan>
+                                    <tspan x="40" dy="60">FACILITATING,</tspan>
+                                    <tspan x="40" dy="60">START</tspan>
+                                    <tspan x="40" dy="60">LEADING</tspan>
+                                </text>
+                                
+                                <!-- Subtitle -->
+                                <text x="40" y="410" font-family="'DM Sans', sans-serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.8)">
+                                    <tspan x="40">The Scrum Master's Path</tspan>
+                                    <tspan x="40" dy="25">to Value Flow Management</tspan>
+                                </text>
+                                
+                                <!-- Decorative accent -->
+                                <rect x="40" y="470" width="120" height="3" fill="#1E5EFF"/>
+                                
+                                <!-- Author -->
+                                <text x="40" y="540" font-family="'IBM Plex Mono', monospace" font-size="16" font-weight="600" fill="white" letter-spacing="2">
+                                    TRISTAN LIBERSAT
+                                </text>
+                                
+                                <!-- Bottom accent -->
+                                <circle cx="360" cy="560" r="30" fill="#FF4B1F" opacity="0.3" filter="url(#glow)"/>
+                            </svg>
+                        </div>
+                        <div class="book-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <h2 class="section-title">The Frustration is Real</h2>
+            <p class="section-subtitle">
+                You've run 50 retrospectives. The same problems keep surfacing. Features marked "done" sit in queues for months. You wonder if your role actually makes a measurable difference.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">of Scrum Masters feel their impact is limited to ceremonies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6 weeks</div>
+                    <div class="stat-label">average lead time despite 2-week sprints</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">51st</div>
+                    <div class="stat-label">retrospective with the same impediments</div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                "If you picked up this book, you've probably felt it—that growing frustration with the gap between what agility promises and what it delivers in your organization."
+                <div class="testimonial-author">— From the Preface</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="book-details">
+        <div class="container">
+            <div class="book-details-grid">
+                <div class="book-info">
+                    <h2 class="section-title">What You Get</h2>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-icon">📖</span>
+                            <div>
+                                <strong>15 comprehensive chapters</strong>
+                                <p>From diagnosis to implementation, with practical tools at every step</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">👥</span>
+                            <div>
+                                <strong>Real practitioner stories</strong>
+                                <p>Follow Sophie, Thomas, and Alix through authentic transformation journeys</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">📊</span>
+                            <div>
+                                <strong>Kanban Maturity Model roadmap</strong>
+                                <p>Progressive path from team-focused to portfolio-level optimization</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">🎯</span>
+                            <div>
+                                <strong>Actionable frameworks</strong>
+                                <p>Value Stream Mapping, Improvement OKRs, Flow Metrics, and more</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">🔄</span>
+                            <div>
+                                <strong>Free lifetime updates</strong>
+                                <p>Get all future editions and improvements at no extra cost</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">📱</span>
+                            <div>
+                                <strong>Multiple formats</strong>
+                                <p>PDF, EPUB, and online reader—read on any device</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <div class="price-badge">Available Now on Leanpub</div>
+                    <div class="price-wrapper">
+                        <div class="price-label">Suggested Price</div>
+                        <div class="price">$24.99</div>
+                        <div class="price-note">Minimum $14.99 • You choose what to pay</div>
+                    </div>
+                    <a href="https://leanpub.com/valueflowmanagement" target="_blank" class="btn btn-primary btn-large">Get the Book Now</a>
+                    <div class="guarantee">
+                        <strong>60-Day Money Back Guarantee</strong>
+                        <p>Not satisfied? Get a full refund within 60 days, no questions asked.</p>
+                    </div>
+                    <div class="sample-link">
+                        <a href="https://leanpub.com/valueflowmanagement" target="_blank">📄 Download Free Sample Chapters</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">The Path Forward: Value Flow Management</h2>
+            <p class="section-subtitle">
+                This book is about evolution—from ceremony facilitator to flow optimizer, from activity performer to outcome owner. It's about becoming a <span class="highlight">Value Flow Manager</span>.
+            </p>
+
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <div class="framework-icon">📊</div>
+                    <h3 class="framework-title">From Activities to Outcomes</h3>
+                    <p class="framework-desc">
+                        Stop being accountable for running retrospectives. Start being accountable for reducing lead time. Measure what matters: the flow of value to customers.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">🔄</div>
+                    <h3 class="framework-title">From Framework to Flow</h3>
+                    <p class="framework-desc">
+                        Scrum and Kanban become tools, not rules. Learn when to adapt, when to break patterns, and how to optimize for continuous value delivery.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">🎯</div>
+                    <h3 class="framework-title">From Facilitator to Problem Solver</h3>
+                    <p class="framework-desc">
+                        Actively identify constraints, eliminate bottlenecks, and drive systemic improvements. Build the authority to make real organizational change.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="chapters" id="chapters">
+        <div class="container">
+            <h2 class="section-title">What's Inside</h2>
+            <p class="section-subtitle">
+                15 chapters organized into four parts, with practical tools, real scenarios, and a clear roadmap using the Kanban Maturity Model.
+            </p>
+
+            <div class="chapter-list">
+                <div class="chapter-item">
+                    <div class="chapter-number">01</div>
+                    <div class="chapter-content">
+                        <h3>The 51st Retrospective</h3>
+                        <p>Sophie facilitates another retrospective where the same problems surface. Sound familiar? This is where the journey begins.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">02</div>
+                    <div class="chapter-content">
+                        <h3>Is Agility Really Dead?</h3>
+                        <p>Understanding the gap between agile principles and organizational reality. Why "doing agile" isn't enough.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">03</div>
+                    <div class="chapter-content">
+                        <h3>The Ceremony Trap</h3>
+                        <p>How we got stuck executing ceremonies while losing sight of the outcomes they were meant to produce.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">07</div>
+                    <div class="chapter-content">
+                        <h3>Value Stream Mapping</h3>
+                        <p>Learn how to make flow visible, identify constraints, and create a shared understanding of where time is really spent.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">08</div>
+                    <div class="chapter-content">
+                        <h3>Improvement OKRs</h3>
+                        <p>Move beyond "we'll be better" to measurable objectives that drive real systemic change.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">12</div>
+                    <div class="chapter-content">
+                        <h3>Value Flow Management at Scale</h3>
+                        <p>Whether you're managing one team or coordinating an Agile Release Train, learn how flow optimization works across organizational boundaries.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">13</div>
+                    <div class="chapter-content">
+                        <h3>Gaining Authority and Organizational Buy-In</h3>
+                        <p>The practical reality: how to build the authority needed to make real change, one constraint at a time.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">15</div>
+                    <div class="chapter-content">
+                        <h3>Your Transition Plan</h3>
+                        <p>A concrete roadmap for evolving from ceremony facilitator to Value Flow Manager, mapped to the Kanban Maturity Model.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="author">
+        <div class="container">
+            <div class="author-content">
+                <div class="author-image">TL</div>
+                <div class="author-bio">
+                    <h2>About Tristan Libersat</h2>
+                    <p>
+                        Tristan is an Agile Delivery Leader and Coach at Capgemini, where he's spent over a decade training and coaching hundreds of professionals in agile methodologies across aerospace, telecommunications, and public sectors.
+                    </p>
+                    <p>
+                        His journey started in 2013 with Jeff Sutherland's Certified Scrum Master training, where he discovered that 70% of the course focused on Lean principles—waste reduction, value stream mapping, and metrics. This foundation shaped his conviction that true agility isn't about ceremonies; it's about continuous flow and measurable outcomes.
+                    </p>
+                    <p>
+                        Beyond individual coaching, he manages staffing and career development for Scrum Masters, RTEs, and DevOps Engineers—giving him unique insight into the challenges these professionals face. The frustration of seeing practitioners stuck facilitating their 51st retrospective inspired him to write this book.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/tlibersat" class="social-link">LinkedIn →</a>
+                        <a href="https://medium.com/@tlibersat" class="social-link">Medium →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Ready to Move Beyond Ceremonies?</h2>
+            <p class="section-subtitle">
+                Get the book and join a community of practitioners evolving from facilitation to flow leadership.
+            </p>
+            <a href="https://leanpub.com/valueflowmanagement" target="_blank" class="btn btn-secondary">Get the Book on Leanpub</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Tristan Libersat. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="#">Privacy Policy</a> • 
+                <a href="#">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card, .framework-card, .chapter-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
