@@ -272,35 +272,6 @@
             border-top: 4px solid var(--accent);
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            border-left: 3px solid var(--secondary);
-            background: var(--light);
-        }
-
-        .stat-number {
-            font-family: 'Crimson Pro', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1;
-            margin-bottom: 1rem;
-        }
-
-        .stat-label {
-            font-size: 1.125rem;
-            color: var(--primary);
-            font-weight: 500;
-        }
-
         .solution {
             background: var(--light);
         }
@@ -717,7 +688,7 @@
                 <div class="hero-book">
                     <div class="book-wrapper">
                         <div class="book-cover-svg">
-                            <img alt="Book Cover" src="img/bookcover.png" />
+                            <img alt="Book Cover" src="img/bookcover.png" width="400" height="600" />
                             <svg viewBox="0 0 400 600" style="display:none;" xmlns="http://www.w3.org/2000/svg">
                                 <!-- Book background -->
                                 <rect width="400" height="600" fill="url(#bookGradient)"/>
@@ -779,21 +750,6 @@
             <p class="section-subtitle">
                 You've run 50 retrospectives. The same problems keep surfacing. Features marked "done" sit in queues for months. You wonder if your role actually makes a measurable difference.
             </p>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">87%</div>
-                    <div class="stat-label">of Scrum Masters feel their impact is limited to ceremonies</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">6 weeks</div>
-                    <div class="stat-label">average lead time despite 2-week sprints</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">51st</div>
-                    <div class="stat-label">retrospective with the same impediments</div>
-                </div>
-            </div>
 
             <div class="testimonial">
                 "If you picked up this book, you've probably felt it—that growing frustration with the gap between what agility promises and what it delivers in your organization."
@@ -941,7 +897,23 @@
                     <div class="chapter-number">04</div>
                     <div class="chapter-content">
                         <h3>Back to Fundamentals</h3>
-                        <p>Agility invented nothing. All principles were adapted from Lean manufacturing are are more relevant now than ever.</p>
+                        <p>Agility invented nothing. Learn about Lean, the genesis of agility.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">05</div>
+                    <div class="chapter-content">
+                        <h3>Welcome to the Age of Continuous Flow</h3>
+                        <p>Explore what Continuous Flow means in practice for software development.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">06</div>
+                    <div class="chapter-content">
+                        <h3>The Value Flow Manager</h3>
+                        <p>Understand how Scrum Masters fit in this new World.</p>
                     </div>
                 </div>
 
@@ -962,6 +934,30 @@
                 </div>
 
                 <div class="chapter-item">
+                    <div class="chapter-number">09</div>
+                    <div class="chapter-content">
+                        <h3>Your Flow Maturity Journey</h3>
+                        <p>Know where to begin. Map your progress. Continuous Improvement never stops!</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">10</div>
+                    <div class="chapter-content">
+                        <h3>Measuring and Monitoring Flow</h3>
+                        <p>Data is the foundation of flow management. You can't improve what you don't measure.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
+                    <div class="chapter-number">11</div>
+                    <div class="chapter-content">
+                        <h3>Building Flow-Oriented Teams</h3>
+                        <p>Flow requires a culture and mindset shift. Learn how to lead change through the organization.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
                     <div class="chapter-number">12</div>
                     <div class="chapter-content">
                         <h3>Value Flow Management at Scale</h3>
@@ -978,10 +974,18 @@
                 </div>
 
                 <div class="chapter-item">
+                    <div class="chapter-number">14</div>
+                    <div class="chapter-content">
+                        <h3>Value Flow Management in the AI Age</h3>
+                        <p>The practical reality: how to build the authority needed to make real change, one constraint at a time.</p>
+                    </div>
+                </div>
+
+                <div class="chapter-item">
                     <div class="chapter-number">15</div>
                     <div class="chapter-content">
                         <h3>Your Transition Plan</h3>
-                        <p>A concrete roadmap for evolving from ceremony facilitator to Value Flow Manager, mapped to the Kanban Maturity Model.</p>
+                        <p>AI is fundamentally changing software development. New kinds of bottlenecks emerge.</p>
                     </div>
                 </div>
             </div>
@@ -1004,8 +1008,8 @@
                         Beyond individual coaching, he manages staffing and career development for Scrum Masters, RTEs, and DevOps Engineers—giving him unique insight into the challenges these professionals face. The frustration of seeing practitioners stuck facilitating their 51st retrospective inspired him to write this book.
                     </p>
                     <div class="social-links">
-                        <a href="https://linkedin.com/in/tlibersat" class="social-link">LinkedIn →</a>
-                        <a href="https://medium.com/@tlibersat" class="social-link">Medium →</a>
+                        <a href="https://linkedin.com/in/tlibersat" class="social-link" target="_blank">LinkedIn →</a>
+                        <a href="https://medium.com/@tlibersat" class="social-link" target="_blank">Medium →</a>
                     </div>
                 </div>
             </div>
@@ -1024,11 +1028,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 Tristan Libersat. All rights reserved.</p>
-            <p style="margin-top: 1rem;">
-                <a href="#">Privacy Policy</a> • 
-                <a href="#">Contact</a>
-            </p>
+            <p>© 2026 Tristan Libersat. All rights reserved.</p>
         </div>
     </footer>
 
